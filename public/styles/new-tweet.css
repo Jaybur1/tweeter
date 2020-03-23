@@ -1,0 +1,53 @@
+section {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  width: 100%;
+}
+form textarea,
+label {
+  display: block;
+}
+form label {
+  font-weight: 580;
+  margin-left: 10%;
+}
+form textarea {
+  width: 80%;
+  height: 0px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  margin: 15px 0px;
+  outline: none;
+  resize: none;
+  border: none;
+  border-bottom: 5px solid #545149;
+  background: inherit;
+  transition: 0.5s;
+  font-size: 20px;
+}
+form textarea:focus{
+  height: 40px;
+}
+
+form button {
+  display: inline;
+  margin-left: 10%;
+  font-family: Bungee, cursive;
+  color: #fff;
+  outline: none;
+  border: none;
+  background: #4056A1;
+  transition: 0.5s;
+}
+form button:hover{
+  transform:scale(1.2);
+  cursor: pointer;
+}
+form output {
+  float: right;
+  margin-right: 10%;
+  margin-top: 5px;
+  font-family: Bungee, cursive;
+}

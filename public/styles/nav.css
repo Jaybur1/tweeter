@@ -1,0 +1,38 @@
+nav {
+  position: fixed;
+  top:0;
+  width: 100vw;
+  height: 120px;
+  z-index:10;
+  background: #4056A1;
+  color: #FFF;
+  padding: 1.5em;
+  
+}
+nav span {
+  font-family: 'Bungee', cursive;
+  font-size: 3.3vw;
+}
+nav div {
+  display: inline;
+}
+nav div a {
+  font-size: 0.8em;
+  float: right;
+}
+nav div #link-to-tweet {
+  font-size: unset;
+  margin-top: -2%;
+}
+nav div i {
+  color:red;
+  float:right;
+  font-size: 1em;
+  margin-right: 65px; 
+  margin-top: -2% ;
+  transition: 0.5s;
+}
+nav div i:hover{
+  transform: scale(2);
+  cursor: pointer;
+}
