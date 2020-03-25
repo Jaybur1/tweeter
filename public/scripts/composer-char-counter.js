@@ -4,6 +4,10 @@ const updateCounter = e => {
 
   $("#new-tweet-counter").text(maxChars - textLength);
 
+  if((maxChars - textLength) > 0 ){
+    $('.error').html('')
+  }
+
   if (maxChars - textLength <= 0) {
     $("#new-tweet-counter").css("color", "red");
   } else {

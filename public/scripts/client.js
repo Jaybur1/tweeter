@@ -65,7 +65,10 @@ const tweetValidation = text => {
 
 const sendError = text => {
   if (!text){
+    console.log(text)
     $(".error").html("Thers nothing to submit, write something and try again");
+  }else if(text.length > 140){
+    $(".error").html("You exceed the max number of characters allowed");
   }
   $('#tweet-text').focus()
 };
@@ -75,7 +78,8 @@ $(document).ready(() => {
 
   $("#tweet-form").on("submit", e => {
     e.preventDefault();
-    const text = $("tweet-text").val();
+    const text = $("#tweet-text").val();
+    
     if (!tweetValidation(text)) {
       sendError(text)
     } else {
