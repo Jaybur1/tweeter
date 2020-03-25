@@ -6,7 +6,6 @@
 //a function that converts time stamp into how long ago .-level-1
 // import TimeAgo from 'javascript-time-ago';
 //////////////////////////////////////////////////////////////////////////////////
-
 const testData = [
   {
     user: {
@@ -94,12 +93,52 @@ const createTweetElement = tweet => {
   return $tweet;
 };
 
-$(document).ready(() => {
-  const renderTweets = tweets => {
-    tweets.forEach(tweet =>
-      $("#tweets-list").append(createTweetElement(tweet))
-    );
-  };
+//a function that appends the created tweet to the main feed
+const renderTweets = tweets => {
+  tweets.forEach(tweet =>
+    $("#tweets-list").prepend(createTweetElement(tweet))
+  );
+};
 
+//on succesfull ajax call
+const success = (data) => {
+  const newTweet = {
+    user: {
+      name: "Bob",
+      avatars:
+        "https://cdn0.iconfinder.com/data/icons/kameleon-free-pack-rounded/110/Spongebob-512.png",
+      handle: "@pants**2"
+    },
+    content: {
+      text: data
+    },
+    created_at: new Date(Date.now() / 1000)
+  }
+  testData.push(newTweet);
+}
+//handle update feed
+const updateFeed = () => {
+  $("#tweets-list").html("");
+  $("#new-tweet-counter").html("140");
   renderTweets(testData);
+}
+
+$(document).ready(() => {
+  renderTweets(testData);
+  $('#tweet-form').on('submit', (e) => {
+
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url:'/tweets/',
+      data: $('#tweet-form').serialize(),
+      success: success($('#tweet-text').val()),
+      dataType: 'text'
+    }).then(()=>{
+      $('#tweet-text').val("")
+      updateFeed();
+    })
+    //reset textArea 
+  })
+  
 });

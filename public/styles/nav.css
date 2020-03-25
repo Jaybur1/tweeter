@@ -32,7 +32,3 @@ nav div i {
   margin-top: -2% ;
   transition: 0.5s;
 }
-nav div i:hover{
-  transform: scale(2);
-  cursor: pointer;
-}
