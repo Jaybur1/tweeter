@@ -4,12 +4,6 @@ const updateCounter = e => {
 
   $("#new-tweet-counter").text(maxChars - textLength);
 
-  if (textLength === 0) {
-    $("#tweet-text").css("height", "0px");
-  } else {
-    $("#tweet-text").css("height", "50px");
-  }
-
   if (maxChars - textLength <= 0) {
     $("#new-tweet-counter").css("color", "red");
   } else {
@@ -27,6 +21,10 @@ $(document).ready(() => {
   });
 
   $("#tweet-text").on("keydown", e => {
+    if(e.which === 13) {
+      e.preventDefault();
+      $('#tweet-form').submit()
+    };
     $("#new-tweet-counter").css("transform", "scale(1.1)");
     updateCounter(e);
   });

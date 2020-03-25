@@ -30,7 +30,7 @@ module.exports = {
     const avatars = {
     
       Female: ["https://i.imgur.com/nlhLi3I.png","https://i.imgur.com/z5LNkkB.png","https://i.imgur.com/v0JXau2.png","https://i.imgur.com/lRUnDgU.png", "https://i.imgur.com/3GvwNBf.png"],
-      Male: ["https://i.imgur.com/73hZDYK.png","https://i.imgur.com/5fUVPRP.png","https://i.imgur.com/DVpDmdR.png","https://i.imgur.com/2WZtOD6.png", "https://i.imgur.com/ilT4JDe.png"]
+      Male: ["https://i.imgur.com/73hZDYK.png","https://i.imgur.com/5fUVPRP.png","https://i.imgur.com/DVpDmdR.png","https://i.imgur.com/2WZtOD6.png", "https://i.imgur.com/ilT4JDe.png","https://cdn0.iconfinder.com/data/icons/kameleon-free-pack-rounded/110/Spongebob-512.png"]
     
     }
     
@@ -38,7 +38,8 @@ module.exports = {
     const userAvatar = avatarArray[Math.floor(Math.random()*avatarArray.length)]
   
 
-    return {
+    return userAvatar === "https://cdn0.iconfinder.com/data/icons/kameleon-free-pack-rounded/110/Spongebob-512.png" ? {name: 'Bob', handle:"@pants**2", avatars: userAvatar} :
+    {
       name: userName,
       handle: userHandle,
       avatars: userAvatar

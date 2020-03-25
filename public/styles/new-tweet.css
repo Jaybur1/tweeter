@@ -55,3 +55,9 @@ form output {
   margin-top: 5px;
   font-family: Bungee, cursive;
 }
+
+.error {
+  color: darkred;
+  font-size: 15px;
+  margin-left:15px;
+}
