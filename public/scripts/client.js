@@ -1,16 +1,75 @@
-// a function that creates all the elements for the tweet
+////////////////////////////////////////////////////////////////////////////////////
+// // a function that creates all the elements for the tweet and gluing all together
+// const createTweetElement = tweet => {
+//   //main tweet container
+//   let $tweet = $("<artical>").addClass("tweet");
+//   //header to containe the user info ,avatar and the hendler
+//   let $header = $("<header>");
+//   let $userInfo = $("<div>").addClass("user");
+//   let $avatar = $("<img>")
+//     .addClass("avatar")
+//     .attr("src", tweet.user.avatars);
+//   let $userName = $("<span>").text(tweet.user.name);
+//   let $handle = $("<span>")
+//     .addClass("handle")
+//     .text(tweet.user.handle);
+
+//   //container to contain the user content
+//   let $content = $("<p>")
+//     .addClass("tweet-content")
+//     .text(tweet.content.text);
+
+//   //under line to diveide the contetnt with the footer
+//   let $hr = $("<hr />");
+
+//   //footer to contain created_at and social-collection icons
+//   let $footer = $("<footer>");
+//   let $timePosted = $("<span>")
+//     .addClass("time-posted")
+//     .text(jQuery.timeago(tweet.created_at / 1000*1000));
+//   let $socialCollection = $("<div>").addClass("social-collection").html(`
+//   <i class="fas fa-flag"></i>
+//   <i class="fas fa-retweet"></i>
+//   <i class="fas fa-heart"></i>
+//   `);
+
+//   //glue everything
+//   $tweet.append([
+//     $header.append([$userInfo.append([$avatar, $userName]), $handle]),
+//     $content,
+//     $hr,
+//     $footer.append([$timePosted, $socialCollection])
+//   ]);
+
+//   //return the glued whole glued element
+//   return $tweet;
+// };
+/////////////////////////////////////////////////////////////////////////////
+
+const escapeXSS = str => {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+//a function that appends the created tweet to the main feed
 const createTweetElement = tweet => {
   //main tweet container
+  //handle XSS
+  const safeText = escapeXSS(tweet.content.text);
+  const safeName = escapeXSS(tweet.user.name);
+  const safeHandle = escapeXSS(tweet.user.handle);
+  const safeAvatar = escapeXSS(tweet.user.avatars);
+
   let $tweet = $("<artical>").addClass("tweet");
   $tweet.html(`
     <header>
       <div class="user">
-        <img class="avatar" src=${tweet.user.avatars} />
-        <span>${tweet.user.name}</span>
+        <img class="avatar" src=${safeAvatar} />
+        <span>${safeName}</span>
       </div>
-      <span class="handle">${tweet.user.handle}</span>
+      <span class="handle">${safeHandle}</span>
     </header>
-    <p class="tweet-content">${tweet.content.text}</p>
+    <p class="tweet-content">${safeText}</p>
     <hr />
     <footer>
       <span class="time-posted">${jQuery.timeago(
@@ -41,7 +100,7 @@ const loadTweets = () => {
       renderTweets(data);
     })
     .fail(() => {
-      console.log("fail");
+      throw new Error('Faild to load Tweets');
     });
 };
 
@@ -57,20 +116,27 @@ const updateFeed = () => {
 };
 
 const tweetValidation = text => {
-  if (!text) return false;
-  if (text.length > 140) return false;
+  if (!text) {
+    $(".error").text(
+      "⚠️There's nothing to submit, write something and try again⚠️"
+    );
+    $(".error").css('margin-top','0')
+    return false;
+  }
+  if (text.length > 140) {
+    $(".error").text("⚠️You exceed the max number of characters allowed⚠️");
+    $(".error").css('margin-top','0')
+    return false;
+  }
 
   return true;
 };
 
 const sendError = text => {
-  if (!text){
-    console.log(text)
-    $(".error").html("Thers nothing to submit, write something and try again");
-  }else if(text.length > 140){
-    $(".error").html("You exceed the max number of characters allowed");
+  if (!text) {
+  } else if (text.length > 140) {
   }
-  $('#tweet-text').focus()
+  $("#tweet-text").focus();
 };
 
 $(document).ready(() => {
@@ -79,10 +145,8 @@ $(document).ready(() => {
   $("#tweet-form").on("submit", e => {
     e.preventDefault();
     const text = $("#tweet-text").val();
-    
-    if (!tweetValidation(text)) {
-      sendError(text)
-    } else {
+
+    if (tweetValidation(text)) {
       $.ajax({
         type: "POST",
         url: "/tweets/",

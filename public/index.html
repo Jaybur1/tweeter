@@ -65,12 +65,12 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
+      <p class="error"></p>
       <section class="new-tweet">
         <form id="tweet-form" action="/tweets/" method="POST">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
           <button type="submit">Tweet</button>
-          <span class="error"></span>
           <output
             id="new-tweet-counter"
             name="counter"
@@ -84,7 +84,7 @@
       <section id="tweets-list"></section>
       <br />
     </main>
-    <script src="/scripts/composer-char-counter.js"></script>
+    <script src="/scripts/tweetHelpers.js"></script>
   </body>
 </html>
 
