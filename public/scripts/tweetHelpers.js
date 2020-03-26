@@ -62,16 +62,17 @@ const updateCounter = e => {
   if (textLength === maxChars && e.key !== "Backspace") {
     e.preventDefault();
   }
-  if (e.which === 13) {
-    e.preventDefault();
-    $("#tweet-form").submit();
-  }
+
 };
 
 $(document).ready(() => {
   handleNewComposeButton();
   $("#tweet-text").on("keyup", e => {
     $("#new-tweet-counter").css("transform", "scale(1)");
+    if (e.which === 13) {
+      e.preventDefault();
+      $("#tweet-form").submit();
+    }
     updateCounter(e);
   });
 
