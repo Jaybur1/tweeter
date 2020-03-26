@@ -1,6 +1,27 @@
+const handleNewComposeButton = () => {
+  const $compose = $("#nav-new-tweet");
+  const $icon = $("#compose-icon");
+  $compose.on("mouseover", () => {
+    $icon.css("animation", "bounce 2s linear infinite");
+  });
+  $compose.on("mouseout", () => {
+    $icon.css("animation", "unset");
+  });
+
+  $compose.on("click", () => {
+    $(".error").css("margin-top", "-50px");
+    $("#tweet-text").focus();
+  });
+
+  $("#tweet-text").focus(()=>{
+    $("#tweet-text").css('height','50px')
+  });
+
+};
+
 const handleError = (maxChars, textLength) => {
   if (maxChars - textLength > 0) {
-    $(".error").css('margin-top','-30px')
+    $(".error").css("margin-top", "-50px");
     $(".error").text("");
   }
 };
@@ -28,7 +49,7 @@ const updateCounter = e => {
 };
 
 $(document).ready(() => {
-  // handleError(140,$("#tweet-text").val().length)
+  handleNewComposeButton();
   $("#tweet-text").on("keyup", e => {
     $("#new-tweet-counter").css("transform", "scale(1)");
     updateCounter(e);

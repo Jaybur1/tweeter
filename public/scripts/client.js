@@ -100,7 +100,7 @@ const loadTweets = () => {
       renderTweets(data);
     })
     .fail(() => {
-      throw new Error('Faild to load Tweets');
+      throw new Error("Faild to load Tweets");
     });
 };
 
@@ -110,6 +110,8 @@ const success = () => {
 };
 //handle update feed
 const updateFeed = () => {
+  $(".error").css("margin-top", "-190px");
+  $("#tweet-text").css('height','0px')
   $(".error").html("");
   $("#new-tweet-counter").html("140");
   loadTweets();
@@ -120,12 +122,12 @@ const tweetValidation = text => {
     $(".error").text(
       "⚠️There's nothing to submit, write something and try again⚠️"
     );
-    $(".error").css('margin-top','0')
+    $(".error").css("margin-top", "0");
     return false;
   }
   if (text.length > 140) {
     $(".error").text("⚠️You exceed the max number of characters allowed⚠️");
-    $(".error").css('margin-top','0')
+    $(".error").css("margin-top", "0");
     return false;
   }
 
