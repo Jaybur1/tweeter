@@ -1,8 +1,9 @@
 const handleNewComposeButton = () => {
   const $compose = $("#nav-new-tweet");
   const $icon = $("#compose-icon");
+
   $compose.on("mouseover", () => {
-    $icon.css("animation", "bounce 2s linear infinite");
+    $icon.css("animation", "bouncy 2s linear infinite");
   });
   $compose.on("mouseout", () => {
     $icon.css("animation", "unset");
@@ -17,6 +18,25 @@ const handleNewComposeButton = () => {
     $("#tweet-text").css('height','50px')
   });
 
+  $('#to-the-top-btn').on("mouseover", () => {
+    $("#to-the-top-icon").css("animation", "bounce 2s linear infinite");
+  });
+  $('#to-the-top-btn').on("mouseout", () => {
+    $("#to-the-top-icon").css("animation", "unset");
+  });
+
+  $('#to-the-top-btn').on("click", () => {
+    $(window).scrollTop(0);
+  });
+
+  $(window).on('scroll', ()=> {
+    if($(window).scrollTop() >= 300) {
+      $('#to-the-top-btn').css('display',"unset")
+    }else{
+      $('#to-the-top-btn').css('display',"none")
+  
+    }
+  })
 };
 
 const handleError = (maxChars, textLength) => {

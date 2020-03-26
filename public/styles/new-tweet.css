@@ -34,7 +34,9 @@ form textarea {
   transition: 0.5s;
   font-size: 20px;
 }
-
+form textarea:focus{
+  height: 50px;
+}
 
 form button {
   display: inline;
@@ -63,7 +65,7 @@ form output {
   /* display: hidden; */
   padding: 10px;
   color: darkred;
-  margin-top: -190px;
+  margin-top: -200px;
   font-size: 15px;
   transition: 0.2s;
 }

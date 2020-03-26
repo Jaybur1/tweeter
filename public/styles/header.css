@@ -1,7 +1,7 @@
 header {
   z-index: 1;
   margin-top: 120px;
-  height: 500px;
+  height: 90vh;
   width: 100%;
   position: relative;
   text-align: center;
@@ -19,4 +19,12 @@ header {
 
 #user-info div {
   margin-top: -15px;
+}
+
+
+@media only screen and (max-width: 450px){
+  header {
+    height:86vh;
+  }
+  
 }

@@ -110,10 +110,12 @@ const success = () => {
 };
 //handle update feed
 const updateFeed = () => {
-  $(".error").css("margin-top", "-190px");
-  $("#tweet-text").css('height','0px')
-  $(".error").html("");
+  $(".error").css("margin-top", "-200px");
+  $("#tweet-text").css("height", "0px");
+  $("#tweet-text").blur();
   $("#new-tweet-counter").html("140");
+  $(".error").html("");
+
   loadTweets();
 };
 

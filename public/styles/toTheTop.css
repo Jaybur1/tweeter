@@ -1,0 +1,46 @@
+
+#to-the-top-btn {
+  display: none;
+  position: fixed;
+  bottom:1vh;
+  right:1vw;
+  border:1px solid red;
+  border-radius: 50%;
+  width:80px;
+  height:80px;
+  text-align: center;
+  background: red;
+  transition: 0.3s;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 60%, 100% {
+      -webkit-transform: translate(-50%,-50%);
+      transform: translate(-50%,-50%);
+    }
+  
+    40% {
+      -webkit-transform: translate(-50%,-70%);
+      transform: translate(-50%,-70%);
+    }
+  
+    80% {
+      -webkit-transform: translate(-50%,-70%);
+      transform: translate(-50%,-70%);
+    }
+  }
+
+  #to-the-top-btn i {
+    color:#fff;
+    font-size: 1em;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    transition: 1s;
+    animation: bounce linear infinite;
+  }
+
+  #to-the-top-btn:hover {
+    cursor: pointer;
+   }
