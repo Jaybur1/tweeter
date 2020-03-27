@@ -75,9 +75,9 @@ const createTweetElement = tweet => {
         (tweet.created_at / 1000) * 1000
       )}</span>
       <div class="social-collection">
-        <i class="fas fa-flag"></i>
-        <i class="fas fa-retweet"></i>
-        <i class="fas fa-heart"></i>
+        <i class="scl fas fa-flag"></i>
+        <i class="scl fas fa-retweet"></i>
+        <i class="scl fas fa-heart"></i>
       </div>
     </footer>
   `);

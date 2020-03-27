@@ -88,6 +88,10 @@
   opacity: 7;
 }
 
+#tweets-list artical.tweet:hover .social-collection i {
+  opacity: 9;
+}
+
 #tweets-list artical.tweet footer {
   margin-top: -100px;
 }
@@ -109,6 +113,7 @@
 }
 
 #tweets-list artical.tweet footer .social-collection i {
+  opacity: 0;
   margin-right: 10px;
 }
 /*# sourceMappingURL=tweet.css.map */

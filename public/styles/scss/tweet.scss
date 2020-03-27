@@ -96,6 +96,11 @@ $handle-color: #9497bd;
           opacity: 7;
         }
       }
+      .social-collection{
+        i {
+          opacity: 9;
+        }
+      }
     }
 
     footer {
@@ -117,6 +122,7 @@ $handle-color: #9497bd;
         padding-bottom: 20px;
 
         i{
+          opacity: 0;;
           margin-right:10px;
         }
       }
