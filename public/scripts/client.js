@@ -1,50 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////////
-// // a function that creates all the elements for the tweet and gluing all together
-// const createTweetElement = tweet => {
-//   //main tweet container
-//   let $tweet = $("<artical>").addClass("tweet");
-//   //header to containe the user info ,avatar and the hendler
-//   let $header = $("<header>");
-//   let $userInfo = $("<div>").addClass("user");
-//   let $avatar = $("<img>")
-//     .addClass("avatar")
-//     .attr("src", tweet.user.avatars);
-//   let $userName = $("<span>").text(tweet.user.name);
-//   let $handle = $("<span>")
-//     .addClass("handle")
-//     .text(tweet.user.handle);
-
-//   //container to contain the user content
-//   let $content = $("<p>")
-//     .addClass("tweet-content")
-//     .text(tweet.content.text);
-
-//   //under line to diveide the contetnt with the footer
-//   let $hr = $("<hr />");
-
-//   //footer to contain created_at and social-collection icons
-//   let $footer = $("<footer>");
-//   let $timePosted = $("<span>")
-//     .addClass("time-posted")
-//     .text(jQuery.timeago(tweet.created_at / 1000*1000));
-//   let $socialCollection = $("<div>").addClass("social-collection").html(`
-//   <i class="fas fa-flag"></i>
-//   <i class="fas fa-retweet"></i>
-//   <i class="fas fa-heart"></i>
-//   `);
-
-//   //glue everything
-//   $tweet.append([
-//     $header.append([$userInfo.append([$avatar, $userName]), $handle]),
-//     $content,
-//     $hr,
-//     $footer.append([$timePosted, $socialCollection])
-//   ]);
-
-//   //return the glued whole glued element
-//   return $tweet;
-// };
-/////////////////////////////////////////////////////////////////////////////
 
 const escapeXSS = str => {
   let div = document.createElement("div");
@@ -53,13 +6,13 @@ const escapeXSS = str => {
 };
 //a function that appends the created tweet to the main feed
 const createTweetElement = tweet => {
-  //main tweet container
   //handle XSS
   const safeText = escapeXSS(tweet.content.text);
   const safeName = escapeXSS(tweet.user.name);
   const safeHandle = escapeXSS(tweet.user.handle);
   const safeAvatar = escapeXSS(tweet.user.avatars);
 
+  //tweet container
   let $tweet = $("<artical>").addClass("tweet");
   $tweet.html(`
     <header>
@@ -118,6 +71,8 @@ const updateFeed = () => {
   loadTweets();
 };
 
+
+//handles the error messages before submiting
 const tweetValidation = text => {
   if (!text) {
     $(".error").text(
@@ -135,12 +90,8 @@ const tweetValidation = text => {
   return true;
 };
 
-const sendError = text => {
-  if (!text) {
-  } else if (text.length > 140) {
-  }
-  $("#tweet-text").focus();
-};
+
+
 
 $(document).ready(() => {
   loadTweets();
@@ -161,6 +112,5 @@ $(document).ready(() => {
         updateFeed();
       });
     }
-    //reset textArea
   });
 });
