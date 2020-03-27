@@ -29,7 +29,9 @@
 
 /* Laptops / Desktops: minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
-  /* Write CSS rules that target Laptop/Desktop screen sizes and beyond */
+  header {
+    left: 150px;
+  }
 }
 
 /* Laptops / Desktops: minimum width of 960px */

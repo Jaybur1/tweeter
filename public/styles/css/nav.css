@@ -77,4 +77,9 @@ nav div i {
 nav div:hover {
   cursor: pointer;
 }
+
+nav div:hover i {
+  -webkit-animation: bouncy 1s linear infinite;
+          animation: bouncy 1s linear infinite;
+}
 /*# sourceMappingURL=nav.css.map */
