@@ -1,56 +1,67 @@
 section {
   position: relative;
   left: 50%;
-  transform: translate(-50%);
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
   width: 100%;
-  margin-top:30px;
+  margin-top: 30px;
 }
 
-form {
+section form {
   margin-top: 20px;
 }
-form textarea,
-label {
+
+section form textarea,
+section form label {
   display: block;
 }
-form label {
-  font-weight: 580;
+
+section form label {
+  font-weight: 600;
   margin-left: 10%;
 }
-form textarea {
-  width: 80%;
-  height: 0px;
+
+section form textarea {
   position: relative;
   left: 50%;
-  transform: translate(-50%);
-  margin: 15px 0px;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
   outline: none;
   resize: none;
   border: none;
   border-bottom: 5px solid #545149;
+  width: 80%;
+  height: 0px;
+  margin: 15px 0px;
   background: inherit;
+  -webkit-transition: 0.5s;
   transition: 0.5s;
   font-size: 20px;
 }
-form textarea:focus{
+
+section form textarea:focus {
   height: 50px;
 }
 
-form button {
+section form button {
   display: inline;
   margin-left: 10%;
   font-family: Bungee, cursive;
   color: #fff;
   outline: none;
   border: none;
-  background: #4056A1;
+  background: #4056a1;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
-form button:hover{
-  transform:scale(1.2);
+
+section form button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
   cursor: pointer;
 }
-form output {
+
+section form output {
   float: right;
   margin-right: 10%;
   margin-top: 5px;
@@ -60,10 +71,11 @@ form output {
 .error {
   text-align: center;
   font-weight: 600;
-  /* display: hidden; */
   padding: 10px;
   color: darkred;
   margin-top: -200px;
   font-size: 15px;
+  -webkit-transition: 0.2s;
   transition: 0.2s;
 }
+/*# sourceMappingURL=new-tweet.css.map */

@@ -1,0 +1,80 @@
+@-webkit-keyframes bouncy {
+  0%,
+  20%,
+  60%,
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+  80% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes bouncy {
+  0%,
+  20%,
+  60%,
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+  80% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 120px;
+  z-index: 10;
+  background: #4056a1;
+  color: #fff;
+  padding: 1.4em;
+}
+
+nav span {
+  font: 1.3em "Bungee", cursive;
+}
+
+nav div {
+  display: inline;
+  position: absolute;
+  right: 1.5em;
+}
+
+nav div a {
+  font-size: 0.8em;
+  float: right;
+}
+
+nav div #link-to-tweet {
+  font-size: unset;
+  margin-top: -2%;
+}
+
+nav div i {
+  color: red;
+  float: right;
+  font-size: 1em;
+  margin-right: 65px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+nav div:hover {
+  cursor: pointer;
+}
+/*# sourceMappingURL=nav.css.map */

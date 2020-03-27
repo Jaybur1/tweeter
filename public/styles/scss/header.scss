@@ -1,0 +1,30 @@
+$header-background: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+$header-background-color: #e67700;
+
+@mixin center($property) {
+  position: relative;
+  top:$property;
+  left:$property;
+  transform: translate(-$property,-$property);
+}
+
+header {
+  z-index: 1;
+  margin-top: 120px;
+  height: 90vh;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  background: $header-background-color $header-background;
+
+  #user-info {
+    @include center(50%);
+    color: #fff;
+
+    div {
+      margin-top: -15px;
+    }
+  }
+}
+
+

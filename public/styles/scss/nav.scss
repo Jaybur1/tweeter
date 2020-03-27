@@ -1,0 +1,65 @@
+$nav-background: #4056a1;
+$logo-font: "Bungee", cursive;
+
+@keyframes bouncy {
+  0%,
+  20%,
+  60%,
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  40% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+
+  80% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 120px;
+  z-index: 10;
+  background: $nav-background;
+  color: #fff;
+  padding: 1.4em;
+
+  span {
+    font: 1.3em $logo-font;
+  }
+
+  div {
+    display: inline;
+    position: absolute;
+    right: 1.5em;
+
+    a {
+      font-size: 0.8em;
+      float: right;
+    }
+
+    #link-to-tweet {
+      font-size: unset;
+      margin-top: -2%;
+    }
+
+    i {
+      color: red;
+      float: right;
+      font-size: 1em;
+      margin-right: 65px;
+      transition: 0.5s;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

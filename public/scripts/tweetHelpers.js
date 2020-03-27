@@ -14,45 +14,45 @@ const handleNewComposeButton = () => {
     $("#tweet-text").focus();
   });
 
-  $("#tweet-text").focus(()=>{
-    $("#tweet-text").css('height','50px')
+  $("#tweet-text").focus(() => {
+    $("#tweet-text").css("height", "50px");
   });
 
-  $('#to-the-top-btn').on("mouseover", () => {
-    $("#to-the-top-icon").css("animation", "bounce 2s linear infinite");
+  $("#to-the-top-btn").on("mouseover", () => {
+    $("#to-the-top-icon").css("animation", "bounce 1s linear infinite");
   });
-  $('#to-the-top-btn').on("mouseout", () => {
+  $("#to-the-top-btn").on("mouseout", () => {
     $("#to-the-top-icon").css("animation", "unset");
   });
 
-  $('#to-the-top-btn').on("click", () => {
+  $("#to-the-top-btn").on("click", () => {
     $(window).scrollTop(0);
   });
 
-  $(window).on('scroll', ()=> {
-    if($(window).scrollTop() >= 300) {
-      $('#to-the-top-btn').css('display',"unset")
-    }else{
-      $('#to-the-top-btn').css('display',"none")
-  
+  $(window).on("scroll", () => {
+    if ($(window).scrollTop() >= 300) {
+      $("#to-the-top-btn").css("display", "unset");
+    } else {
+      $("#to-the-top-btn").css("display", "none");
     }
-  })
+  });
 };
 
-const handleError = (maxChars, textLength) => {
-  if (maxChars - textLength > 0) {
+const handleError = (text) => {
+
+  if (text && 140 - text.length > 0) {
     $(".error").css("margin-top", "-50px");
     $(".error").text("");
   }
 };
 
-const updateCounter = e => {
+const updateCounter = (e, action) => {
   const maxChars = 140;
   const textLength = $("#tweet-text").val().length;
 
   $("#new-tweet-counter").text(maxChars - textLength);
 
-  handleError(maxChars, textLength);
+  handleError($("#tweet-text").val());
 
   if (maxChars - textLength <= 0) {
     $("#new-tweet-counter").css("color", "red");
@@ -63,21 +63,24 @@ const updateCounter = e => {
     e.preventDefault();
   }
 
+  if (e.which === 13 && action === "up") {
+    e.preventDefault();
+  } else if (e.which === 13 && action === "down") {
+    $("#tweet-form").submit();
+    e.preventDefault();
+ 
+  }
 };
 
 $(document).ready(() => {
   handleNewComposeButton();
   $("#tweet-text").on("keyup", e => {
     $("#new-tweet-counter").css("transform", "scale(1)");
-    if (e.which === 13) {
-      e.preventDefault();
-      $("#tweet-form").submit();
-    }
-    updateCounter(e);
+    updateCounter(e,'up');
   });
 
   $("#tweet-text").on("keydown", e => {
     $("#new-tweet-counter").css("transform", "scale(1.1)");
-    updateCounter(e);
+    updateCounter(e,'down');
   });
 });

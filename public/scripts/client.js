@@ -70,7 +70,6 @@ const createTweetElement = tweet => {
       <span class="handle">${safeHandle}</span>
     </header>
     <p class="tweet-content">${safeText}</p>
-    <hr />
     <footer>
       <span class="time-posted">${jQuery.timeago(
         (tweet.created_at / 1000) * 1000

@@ -1,0 +1,79 @@
+/*smartphone breakpoint is maximum width of around 420px */
+@media only screen and (max-width: 420px) {
+  .handle {
+    top:100px;
+  }
+
+  header {
+    height: 86vh;
+  }
+
+  nav {
+    padding: 1em;
+
+    span {
+      font-size: 1em;
+      position: absolute;
+      top: 40px;
+    }
+
+    div {
+      display: inline;
+      position: absolute;
+      right: 0.5em;
+      top: 40px;
+    }
+  }
+}
+
+/* Another tablet breakpoint is minimum width of 768px */
+@media only screen and (min-width: 768px) {
+  /* Write CSS rules that target Tablets screen sizes upwards - including desktops */
+}
+
+/* Laptops / Desktops: minimum width of 1024px */
+@media only screen and (min-width: 1024px) {
+  /* Write CSS rules that target Laptop/Desktop screen sizes and beyond */
+}
+
+/* Laptops / Desktops: minimum width of 960px */
+@media only screen and (min-width: 960px) {
+  body {
+    display: flex;
+
+    header {
+      display: inline-flex;
+      position: fixed;
+      left: 100px;
+      top: 90px;
+      width: 300px;
+      height: 300px;
+
+      #user-info {
+        width: 80%;
+        height: 80%;
+
+        img {
+          width: 190px;
+          height: 190px;
+          padding-bottom: -10px;
+        }
+
+        h2 {
+          font-size: 24px;
+          margin-top: -10px;
+        }
+      }
+    }
+
+    main {
+      display: grid;
+      transform: unset;
+      width: 50vw;
+      top: 100px;
+      right: 15px;
+      left: unset;
+      transform: unset;
+    }
+  }
+}

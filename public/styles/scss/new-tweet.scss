@@ -1,0 +1,83 @@
+$bungee: Bungee, cursive;
+$tweet-btn-color: #4056a1;
+$border-color: #545149;
+
+@mixin centerX($property) {
+  position: relative;
+  left: $property;
+  transform: translate(-$property);
+}
+
+@mixin onlyBottomBorder() {
+  outline: none;
+  resize: none;
+  border: none;
+  border-bottom: 5px solid $border-color;
+}
+
+section {
+  @include centerX(50%);
+  width: 100%;
+  margin-top: 30px;
+
+  form {
+    margin-top: 20px;
+    textarea,
+    label {
+      display: block;
+    }
+
+    label {
+      font-weight: 600;
+      margin-left: 10%;
+    }
+
+    textarea {
+      @include centerX(50%);
+      @include onlyBottomBorder();
+      width: 80%;
+      height: 0px;
+      margin: 15px 0px;
+      background: inherit;
+      transition: 0.5s;
+      font-size: 20px;
+
+      &:focus {
+        height: 50px;
+      }
+    }
+
+    button {
+      display: inline;
+      margin-left: 10%;
+      font-family: $bungee;
+      color: #fff;
+      outline: none;
+      border: none;
+      background: $tweet-btn-color;
+      transition: 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+      }
+    }
+
+    output {
+      float: right;
+      margin-right: 10%;
+      margin-top: 5px;
+      font-family: $bungee;
+    }
+
+  }
+}
+.error {
+  text-align: center;
+  font-weight: 600;
+  padding: 10px;
+  color: darkred;
+  margin-top: -200px;
+  font-size: 15px;
+  transition: 0.2s;
+}

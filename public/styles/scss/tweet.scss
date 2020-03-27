@@ -1,0 +1,129 @@
+$border-color: #545149;
+$handle-color: #9497bd;
+@mixin shadow($property) {
+  -webkit-box-shadow: $property;
+  -moz-box-shadow: $property;
+  box-shadow: $property;
+}
+
+@mixin underLine() {
+  outline: none;
+  resize: none;
+  border: none;
+  border-bottom: 4px solid $border-color;
+}
+
+@mixin centerX() {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+
+
+#tweets-list {
+  background: inherit;
+  margin-top: 50px;
+  display: grid;
+
+  artical.tweet {
+    position: relative;
+    transition: 0.2s;
+    margin-top: 30px;
+    border: 4px solid $border-color;
+
+    header {
+      position: relative;
+      width: 100%;
+      left: unset;
+      top: -120px;
+      height: auto;
+      background: inherit;
+      padding: 10px;
+
+      .user {
+        float: left;
+        padding: 20px;
+
+        img {
+          width: 70px;
+          height: 70px;
+        }
+
+        span {
+          position: absolute;
+          display: block;
+          top: 50px;
+          left: 110px;
+        }
+      }
+
+      .handle {
+        opacity: 0;
+        font-weight: 501;
+        color: $handle-color;
+        position: absolute;
+        display: inline-flex;
+        top: 50px;
+        right: 20px;
+        transition: 0.3s;
+      }
+    }
+
+    .tweet-content {
+      @include underLine();
+      @include centerX();
+      display: inline-flex;
+      padding-bottom: 5px;
+      width: 85%;
+      top: -120px;
+      padding-left: 0px;
+      word-break: break-all;
+      text-align: left;
+    }
+
+    &:hover {
+      @include shadow(9px 10px 5px 3px rgba(196, 196, 230, 1));
+
+      .handle {
+        opacity: 7;
+      }
+
+      .user {
+        span {
+          font-weight: 501;
+          opacity: 7;
+        }
+      }
+    }
+
+    footer {
+      margin-top:-100px;
+
+      .time-posted {
+        font-size:12px;
+        font-weight: 501;
+        position:absolute;
+        left:50px;
+      }
+
+      .social-collection {
+        color:#4056A1;
+        font-size: 12px;
+        font-weight: 501;
+        float:right;
+        padding-right: 50px;
+        padding-bottom: 20px;
+
+        i{
+          margin-right:10px;
+        }
+      }
+    }
+  }
+}
+
+
+
+
