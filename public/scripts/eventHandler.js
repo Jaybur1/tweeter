@@ -12,11 +12,9 @@ const updateCounter = () => {
 
   $("#new-tweet-counter").text(maxChars - textLength);
 
-  if (maxChars - textLength <= 0) {
-    $("#new-tweet-counter").css("color", "red");
-  } else {
-    $("#new-tweet-counter").css("color", "unset");
-  }
+  maxChars - textLength <= 0
+    ? $("#new-tweet-counter").css("color", "red")
+    : $("#new-tweet-counter").css("color", "unset");
 };
 
 const keyPressHandler = (e, action) => {
@@ -26,7 +24,7 @@ const keyPressHandler = (e, action) => {
   if (text.length === maxChars && e.key !== "Backspace") {
     e.preventDefault();
   }
-//handle submit on Enter 
+  //handle submit on Enter
   if (e.which === 13 && action === "up") {
     e.preventDefault();
   } else if (e.which === 13 && action === "down") {
@@ -46,11 +44,9 @@ const mouseHandler = () => {
     $(window).scrollTop(0);
   });
   $(window).on("scroll", () => {
-    if ($(window).scrollTop() >= 300) {
-      $("#to-the-top-btn").css("display", "unset");
-    } else {
-      $("#to-the-top-btn").css("display", "none");
-    }
+    $(window).scrollTop() >= 300
+      ? $("#to-the-top-btn").css("display", "unset")
+      : $("#to-the-top-btn").css("display", "none");
   });
 };
 
@@ -69,10 +65,6 @@ const keyHandler = () => {
     updateCounter();
   });
 };
-
-
-
-
 
 $(document).ready(() => {
   mouseHandler();

@@ -24,9 +24,9 @@ const createTweetElement = tweet => {
     </header>
     <p class="tweet-content">${safeText}</p>
     <footer>
-      <span class="time-posted">${jQuery.timeago(
-        (tweet.created_at / 1000) * 1000
-      )}</span>
+      <span class="time-posted">${
+        jQuery.timeago((tweet.created_at / 1000) * 1000)
+      }</span>
       <div class="social-collection">
         <i class="scl fas fa-flag"></i>
         <i class="scl fas fa-retweet"></i>
@@ -46,9 +46,7 @@ const renderTweets = tweets => {
 //funciton that loads tweets from the DB
 const loadTweets = () => {
   $.get("/tweets/", data => {
-    console.log("success");
-  })
-    .done(data => {
+  }).done(data => {
       renderTweets(data);
     })
     .fail(() => {
@@ -58,7 +56,6 @@ const loadTweets = () => {
 
 //on succesfull ajax call
 const success = () => {
-  console.log("tweet posted");
 };
 //handle update feed
 const updateFeed = () => {
@@ -75,9 +72,7 @@ const updateFeed = () => {
 //handles the error messages before submiting
 const tweetValidation = text => {
   if (!text) {
-    $(".error").text(
-      "⚠️There's nothing to submit, write something and try again⚠️"
-    );
+    $(".error").text("⚠️There's nothing to submit, write something and try again⚠️");
     $(".error").css("margin-top", "0");
     return false;
   }
@@ -86,7 +81,6 @@ const tweetValidation = text => {
     $(".error").css("margin-top", "0");
     return false;
   }
-
   return true;
 };
 
@@ -109,6 +103,7 @@ $(document).ready(() => {
         dataType: "text"
       }).then(() => {
         $("#tweet-text").val("");
+        $('.counter').css('color','unset')
         updateFeed();
       });
     }
